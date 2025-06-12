@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "80d2f1ea-a9f3-4ea9-8919-09e90d9f0689",
+		"name": "API Todo Telenavi",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3723185",
+		"_collection_link": "https://solar-astronaut-600055.postman.co/workspace/Kypas-API~49ec098b-5d8e-453c-8057-6c6ea6082293/collection/3723185-80d2f1ea-a9f3-4ea9-8919-09e90d9f0689?action=share&source=collection_link&creator=3723185"
+	},
+	"item": [
+		{
+			"name": "1. Create todo list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Make API for Todo App\",\n    \"assignee\": \"Muhamad Habibi Azmi\",\n    \"due_date\": \"2025-06-20\",\n    \"time_tracked\": 1,\n    // \"status\": \"open\", //default: pending\n    \"priority\": \"low\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/todos/create",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"todos",
+						"create"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "201 Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Make API for Todo App\",\n    \"assignee\": \"Muhamad Habibi Azmi\",\n    \"due_date\": \"2025-06-20\",\n    \"time_tracked\": 1,\n    \"status\": \"open\", //default: pending\n    \"priority\": \"low\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/todos/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"todos",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Todo created successfully\",\n    \"todo\": {\n        \"id\": 53,\n        \"title\": \"Make API for Todo App\",\n        \"assignee\": \"Muhamad Habibi Azmi\",\n        \"due_date\": \"2025-06-20\",\n        \"time_tracked\": 1,\n        \"status\": \"pending\",\n        \"priority\": \"low\",\n        \"created_at\": \"2025-06-12T00:42:23.000000Z\",\n        \"updated_at\": \"2025-06-12T00:42:23.000000Z\"\n    }\n}"
+				},
+				{
+					"name": "422 Validation due_date cannot be in past",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Make API for Todo App\",\n    \"assignee\": \"Muhamad Habibi Azmi\",\n    \"due_date\": \"2025-06-01\",\n    \"time_tracked\": 1,\n    \"status\": \"open\", //default: pending\n    \"priority\": \"low\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/todos/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"todos",
+								"create"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The due date field must be a date after or equal to today.\",\n    \"errors\": {\n        \"due_date\": [\n            \"The due date field must be a date after or equal to today.\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "2. Generate Excel Export",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/todos/export?title=Non sed aut quo.&assignee=Aiden, Habibi&start=2025-06-01&end=2025-06-30&min=1000&max=2000&status=open,pending&priority=low,high",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"todos",
+						"export"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Non sed aut quo."
+						},
+						{
+							"key": "assignee",
+							"value": "Aiden, Habibi"
+						},
+						{
+							"key": "start",
+							"value": "2025-06-01"
+						},
+						{
+							"key": "end",
+							"value": "2025-06-30"
+						},
+						{
+							"key": "min",
+							"value": "1000"
+						},
+						{
+							"key": "max",
+							"value": "2000"
+						},
+						{
+							"key": "status",
+							"value": "open,pending",
+							"description": "allowed status: pending, open, in_progress, completed"
+						},
+						{
+							"key": "priority",
+							"value": "low,high",
+							"description": "allowed priority: low, medium, high"
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Todo List to Provide Chart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/chart?type=status",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"chart"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "status",
+							"description": "allowed type: status,priority,assignee"
+						}
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "200 Filter By type status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/chart?type=status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"chart"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "status",
+									"description": "allowed type: status,priority,assignee"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_summary\": {\n        \"pending\": 17,\n        \"in_progress\": 20,\n        \"completed\": 13\n    }\n}"
+				},
+				{
+					"name": "200 Filter By type priority",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/chart?type=priority",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"chart"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "priority",
+									"description": "allowed type: status,priority,assignee"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_summary\": {\n        \"pending\": 17,\n        \"in_progress\": 20,\n        \"completed\": 13\n    }\n}"
+				},
+				{
+					"name": "200 Filter By type assigne",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/chart?type=assignee",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"chart"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "assignee",
+									"description": "allowed type: status,priority,assignee"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_summary\": {\n        \"pending\": 17,\n        \"in_progress\": 20,\n        \"completed\": 13\n    }\n}"
+				},
+				{
+					"name": "422 Validation handle",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/chart?status=not exists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"chart"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "not exists",
+									"description": "allowed type: status,priority,assignee"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The type field is required.\",\n    \"errors\": {\n        \"type\": [\n            \"The type field is required.\"\n        ]\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		}
+	]
+}
