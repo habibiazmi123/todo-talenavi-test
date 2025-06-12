@@ -5,7 +5,7 @@
 First clone this repository, install the dependencies, and setup your .env file.
 
 ```
-git clone git@github.com:habibiazmi123/todo-tanevavi-test.git
+[git clone git@github.com:habibiazmi123/todo-tanevavi-test.git](https://github.com/habibiazmi123/todo-talenavi-test.git)
 composer install
 cp .env.example .env
 ```
@@ -31,4 +31,4 @@ Exports the existing todo list into an Excel (.xlsx) file for easy reporting or 
 Method: GET ({{base_url}}/api/chart?type={status or priority or assignee}
 Retrieves a structured dataset of todo items, formatted to support chart visualizations (e.g., for task completion rates, category distribution, or trends over time).
 
-You can view the API documentation in the Telenavi Todo API file.postman_collection using postman
+You can view the API documentation in the `API Todo Telenavi.postman_collection.json` using postman
