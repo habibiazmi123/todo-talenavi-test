@@ -5,7 +5,7 @@
 First clone this repository, install the dependencies, and setup your .env file.
 
 ```
-[git clone git@github.com:habibiazmi123/todo-tanevavi-test.git](https://github.com/habibiazmi123/todo-talenavi-test.git)
+git clone git@github.com:habibiazmi123/todo-tanevavi-test.git
 composer install
 cp .env.example .env
 ```
